@@ -9,7 +9,9 @@
         @if($task?->tags?->isNotEmpty())
             <div class="flex flex-wrap">
                 @foreach($task->tags as $tag)
-                    <div class="mr-2 my-1 bg-gray-200 rounded p-1 text-xs">{{ $tag->name }}</div>
+                    <x-elements.tag-link-button class="mr-2 my-1"  href="{{ route('tasks.detach', ['task' => $task, 'tag' => $tag]) }}">
+                        {{ $tag->name }}
+                    </x-elements.tag-link-button>
                 @endforeach
             </div>
         @endif

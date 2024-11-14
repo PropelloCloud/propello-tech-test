@@ -82,4 +82,13 @@ class TaskController extends Controller
 
         return redirect()->to(route('tasks.home'));
     }
+
+    public function detach(Task $task)
+    {
+        $tagId = request('tag');
+
+        $task->tags()->detach($tagId);
+
+        return redirect()->to(route('tasks.home'));
+    }
 }

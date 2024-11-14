@@ -19,7 +19,7 @@
                     Add Task
                 </x-elements.link-button>
                 <x-elements.link-button href="{{ route('tags.home') }}" class="ml-2">
-                    Tags
+                    Add Tags
                 </x-elements.link-button>
             </div>
         </div>

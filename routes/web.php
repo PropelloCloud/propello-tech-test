@@ -28,6 +28,7 @@ Route::middleware(['auth', 'verified'])
         Route::get('delete/{task}', 'destroy')->name('destroy');
         Route::get('complete/{task}', 'complete')->name('complete');
         Route::post('attach/{task}', 'attach')->name('attach');
+        Route::get('detach/{task}', 'detach')->name('detach');
     });
 
 Route::middleware(['auth', 'verified'])
@@ -41,7 +42,6 @@ Route::middleware(['auth', 'verified'])
         Route::post('tags/edit/{tag}', 'update')->name('update');
         Route::get('tags/delete/{tag}', 'destroy')->name('destroy');
     });
-
 
 Route::middleware('auth')
     ->prefix('profile')
