@@ -9,14 +9,16 @@ use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Task;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
     public function index(): View
     {
         $tasks = auth()->user()?->tasks ?? [];
+        $tags = auth()->user()?->tags ?? [];
 
-        return view('index', compact('tasks'));
+        return view('index', compact('tasks', 'tags'));
     }
 
     public function create(): View
@@ -68,6 +70,15 @@ class TaskController extends Controller
 
         $task->complete = !$task->complete;
         $task->save();
+
+        return redirect()->to(route('tasks.home'));
+    }
+
+    public function attach(Request $request, Task $task)
+    {
+        $tagId = request('attach_tag');
+
+        $task->tags()->attach($tagId);
 
         return redirect()->to(route('tasks.home'));
     }
