@@ -17,6 +17,7 @@ class UpdateTaskRequest extends FormRequest
     {
         return [
             'name' => 'required|string|min:5|max:191',
+            'tag_ids' => 'nullable|array'
         ];
     }
 }
