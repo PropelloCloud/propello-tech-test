@@ -23,7 +23,7 @@ Route::middleware(['auth', 'verified'])
         Route::get('create', 'create')->name('create');
         Route::post('create', 'store')->name('store');
         Route::get('edit/{task}', 'edit')->name('edit');
-        Route::post('edit/{task}', 'update')->name('update');
+        Route::put('edit/{task}', 'update')->name('update');
         Route::get('delete/{task}', 'destroy')->name('destroy');
         Route::get('complete/{task}', 'complete')->name('complete');
     });
