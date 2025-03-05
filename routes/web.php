@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth', 'verified'])
     ->name('tasks.')
     ->controller(TaskController::class)
-    ->group(function () {
+    ->group(function() {
         Route::get('', 'index')->name('home');
         Route::get('create', 'create')->name('create');
         Route::post('create', 'store')->name('store');
@@ -29,17 +29,17 @@ Route::middleware(['auth', 'verified'])
         Route::get('complete/{task}', 'complete')->name('complete');
     });
 
-Route::middleware(['auth', 'verified'])
+    Route::middleware(['auth', 'verified'])
     ->prefix('tags')
     ->name('tags.')
     ->controller(TagController::class)
-    ->group(function () {
+    ->group(function() {
         Route::get('', 'index')->name('index');
         Route::get('create', 'create')->name('create');
-        Route::post('create', 'store')->name('store');
-        Route::get('edit/{tag}', 'edit')->name('edit');
-        Route::put('edit/{tag}', 'update')->name('update');
-        Route::delete('delete/{tag}', 'destroy')->name('destroy');
+        Route::post('', 'store')->name('store');
+        Route::get('{tag}/edit', 'edit')->name('edit');
+        Route::put('{tag}', 'update')->name('update');
+        Route::delete('{tag}', 'destroy')->name('destroy');
     });
 
 
@@ -53,4 +53,4 @@ Route::middleware('auth')
         Route::delete('', 'destroy')->name('destroy');
     });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
