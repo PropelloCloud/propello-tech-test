@@ -14,7 +14,7 @@ class TaskController extends Controller
 {
     public function index(): View
     {
-        $tasks = auth()->user()?->tasks ?? [];
+        $tasks = auth()->user()?->tasks()->with('tags')->get() ?? [];
 
         return view('index', compact('tasks'));
     }

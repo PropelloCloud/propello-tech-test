@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth', 'verified'])
     ->name('tasks.')
     ->controller(TaskController::class)
-    ->group(function() {
+    ->group(function () {
         Route::get('', 'index')->name('home');
         Route::get('create', 'create')->name('create');
         Route::post('create', 'store')->name('store');
@@ -27,6 +28,20 @@ Route::middleware(['auth', 'verified'])
         Route::get('delete/{task}', 'destroy')->name('destroy');
         Route::get('complete/{task}', 'complete')->name('complete');
     });
+
+Route::middleware(['auth', 'verified'])
+    ->prefix('tags')
+    ->name('tags.')
+    ->controller(TagController::class)
+    ->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('create', 'store')->name('store');
+        Route::get('edit/{tag}', 'edit')->name('edit');
+        Route::put('edit/{tag}', 'update')->name('update');
+        Route::delete('delete/{tag}', 'destroy')->name('destroy');
+    });
+
 
 Route::middleware('auth')
     ->prefix('profile')
@@ -38,4 +53,4 @@ Route::middleware('auth')
         Route::delete('', 'destroy')->name('destroy');
     });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

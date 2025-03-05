@@ -16,4 +16,18 @@
             Delete
         </x-elements.link-button-danger>
     </div>
+
+    <div class="w-full pt-2">
+        @if($task->tags->isNotEmpty())
+            <div class="flex flex-wrap">
+                @foreach($task->tags as $tag)
+                    <span class="inline-block bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs mr-2 mb-2">
+                        {{ $tag->name }}
+                    </span>
+                @endforeach
+            </div>
+        @else
+            <span class="text-gray-500 text-xs">No tags</span>
+        @endif
+    </div>
 </div>
