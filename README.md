@@ -19,10 +19,17 @@ Alternately if this is not a practical solution (for example on a Windows machin
 In order to set up your development environment you should simply need to run the following commands:
 
 ```shell
-php artisan serve
+# If not already cloned
+git clone https://github.com/PropelloCloud/propello-tech-test.git
+cd propello-tech-test
+
+cp .env.example .env
+composer install
 php artisan migrate
+php artisan key:generate
 npm install
 npm run dev
+php artisan serve
 ```
 
 Environment should then be available at [127.0.0.1:8000](http://127.0.0.1:8000)
